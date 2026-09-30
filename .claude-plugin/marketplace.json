@@ -1,0 +1,25 @@
+{
+  "name": "anteras-odin",
+  "description": "NIPO ODIN tooling for Claude Code and Codex, backed by the canonical engine.",
+  "owner": {
+    "name": "Antonio Rodriguez",
+    "email": "arodriguez@anteras.org"
+  },
+  "plugins": [
+    {
+      "name": "odin",
+      "source": "./plugins/odin",
+      "description": "MCP tools (check, symbols, review, explain, gated gesstabs) + odin:// reference resources, the odin-review skill, /odin: commands, and PostToolUse auto-validation of every .odin edit.",
+      "category": "productivity",
+      "keywords": [
+        "odin",
+        "nipo",
+        "survey",
+        "questionnaire",
+        "gesstabs",
+        "mcp"
+      ],
+      "version": "1.27.0"
+    }
+  ]
+}

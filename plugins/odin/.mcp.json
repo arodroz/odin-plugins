@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "odin": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@arodroz/odin@1.27.0",
+        "mcp"
+      ]
+    }
+  }
+}

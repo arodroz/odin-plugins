@@ -1,0 +1,21 @@
+{
+  "name": "odin",
+  "version": "1.27.0",
+  "description": "NIPO ODIN questionnaire tooling for Claude Code and Codex: ground-truth diagnostics, the structural map, corpus audit, and gated GESStabs generation over MCP, plus /odin: commands and auto-validation of every .odin edit. Backed by the canonical Go engine via `odin mcp`.",
+  "author": {
+    "name": "Antonio Rodriguez",
+    "email": "arodriguez@anteras.org"
+  },
+  "homepage": "https://github.com/arodroz/odin-plugins",
+  "repository": "https://github.com/arodroz/odin-plugins",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "keywords": [
+    "odin",
+    "nipo",
+    "survey",
+    "questionnaire",
+    "gesstabs",
+    "mcp",
+    "nfield"
+  ]
+}
