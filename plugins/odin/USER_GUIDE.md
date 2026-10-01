@@ -37,7 +37,7 @@ After installing (README) and starting a fresh session:
 
 1. Type `/odin:` — you should see `audit`, `check`, and `explain` in the completion list.
 2. Ask: *"List the odin MCP tools you have."* — Claude should name `check`, `symbols`,
-   `review`, `explain`, and `gesstabs`.
+   `review`, and `explain`.
 3. Run `/odin:check` on any `.odin` file — you should get either `clean` or a list of
    `file:line:col` diagnostics.
 
@@ -127,9 +127,6 @@ raw text). Three things it's especially good at:
   `survey.odin` actually implement it?"* Claude pulls the script's structural map,
   reads your spec, and reports what's **missing**, **mismatched routing**, **orphaned**,
   or **extra** — each tied to a real symbol or flow edge, not a grepped line.
-- **Generator-vs-source verification** — *"Can this script be turned into a clean
-  GESStabs spec? Where does it contradict itself?"* Claude runs the gated generator
-  and reports the inconsistencies grouped by family (banner, recode, mean, battery…).
 
 The skill's one hard rule is also your guarantee: **it never infers structure by
 reading or regexing `.odin` source.** If the engine can't tell it something, it says
@@ -187,22 +184,6 @@ resources are identical across clients.
 
 ---
 
-## GESStabs generation (licensed)
-
-The `gesstabs` tool and Capability 3 of the skill run the GESStabs table generator
-behind a license gate — the same one the VS Code Pro extension uses:
-
-- **In the trial window**, no key is needed — it just works.
-- **After the trial**, set `ODIN_LICENSE_KEY` in the environment that launches Claude
-  Code (so the `odin mcp` server inherits it). It is read **only** from the
-  environment, never passed as a tool argument — so your key never lands in a
-  transcript or process list.
-- **When the gate blocks**, the tool degrades gracefully: it tells Claude
-  verification was *skipped because the license is unavailable* (and why), rather than
-  reporting a misleading "no problems found." Set the key to run it for real.
-
----
-
 ## Troubleshooting
 
 **`/odin:` shows no commands.**
@@ -221,10 +202,6 @@ suppressed). Make a clearly invalid edit (e.g. a `*GOTO` to a question that does
 exist) to a `.odin` file to see it. If still nothing, verify the hook handler works
 directly: `echo '{"tool_input":{"file_path":"/abs/path/to/survey.odin"}}' | npx -y @arodroz/odin hook`
 should print block JSON for a defective file.
-
-**`gesstabs` says the trial expired / license unavailable.**
-Expected once the trial ends. Set `ODIN_LICENSE_KEY` in the environment that starts
-Claude Code (or Codex) and restart, so the MCP server picks it up.
 
 **My script is UTF-16 (a typical Nfield export) — will it work?**
 Yes. Every surface (`check`, `audit`, the hook, the tools) decodes UTF-8 and UTF-16

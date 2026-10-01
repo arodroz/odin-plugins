@@ -1,6 +1,6 @@
 ---
 name: odin-review
-description: Audit a corpus of NIPO ODIN (.odin) survey scripts and reconcile a script against a questionnaire spec, using the canonical engine's structural map as ground truth. Use when the user wants to review many .odin files for errors/orphans, compare an .odin to a Word/PDF spec, or asks for a corpus audit, intent-vs-spec check, or generator-vs-source reconciliation.
+description: Audit a corpus of NIPO ODIN (.odin) survey scripts and reconcile a script against a questionnaire spec, using the canonical engine's structural map as ground truth. Use when the user wants to review many .odin files for errors/orphans, compare an .odin to a Word/PDF spec, or asks for a corpus audit or intent-vs-spec check.
 ---
 
 # odin-review
@@ -31,8 +31,8 @@ engine's to state and yours to judge.
 
 ## Prerequisite
 
-Prefer the plugin's `odin` MCP server: its `check`, `symbols`, `review`, `explain` and
-`gesstabs` tools return exactly the JSON contracts the CLI commands below print with
+Prefer the plugin's `odin` MCP server: its `check`, `symbols`, `review` and `explain`
+tools return exactly the JSON contracts the CLI commands below print with
 `--json`, so every CLI example has an MCP twin. The plugin starts the server itself
 (through `npx @arodroz/odin`); nothing needs to be on `PATH`.
 
@@ -99,62 +99,10 @@ the intended questionnaire.
 
 The parser owns *what the script is*; you own *whether that matches intent*.
 
-## Capability 3 — Generator-vs-source verification
-
-Confirm the GESStabs generator can turn the `.odin` into an internally consistent
-tabulation spec — and surface every place the source contradicts what the generator
-needs. The generator already reconciles source against output as it runs; its
-diagnostics *are* the generator-vs-source findings. Your job is to drive it and
-interpret them, not to re-derive them.
-
-1. Run the gated generator over the script, emitting the structured contract:
-   ```sh
-   odin gesstabs survey.odin --json
-   ```
-   The license key is read **only** from `$ODIN_LICENSE_KEY` — never pass it as an
-   argument or echo it. Within the trial window no key is needed.
-2. **Branch on the exit code first** (this is the graceful-degradation step):
-   - **Exit 1 — gated block.** The gate refused: no/expired trial or an
-     invalid/unreachable license. stdout is empty; a reason-specific message is on
-     stderr (e.g. *"GESStabs Generator trial has expired. Set ODIN_LICENSE_KEY to a
-     valid license key to continue."*). **Report that verification was skipped because
-     the license is unavailable, and quote the reason** — do not present an empty result
-     as "no inconsistencies found," and do not fall back to reading the `.odin` text.
-   - **Exit 2 — operational error.** Missing path or an undecodable file; relay it.
-   - **Exit 0 — generator ran.** stdout is the `{schemaVersion, source, diagnostics[]}`
-     contract. Proceed to step 3.
-3. Read `diagnostics[]`. Each entry is LSP-shaped with `source` namespaced as
-   `gesstabs:<family>` (e.g. `gesstabs:banner`, `gesstabs:recode`, `gesstabs:mean`,
-   `gesstabs:battery`) and a `severity` (1 = error, 2 = warning). A non-empty list means
-   the source is inconsistent with what a clean tabulation spec requires; an empty list
-   (`"diagnostics": []`, exit 0) means the generator verified the script clean.
-4. Report the inconsistencies grouped by `gesstabs:<family>`, each with its severity and
-   message (which names the offending symbol — e.g. a banner referencing an undeclared
-   variable). This is the same finding set the generator's `.generator-report.json`
-   carries, so your summary matches what the Pro generator would write to disk.
-
-Worked example — the graceful no-license path, captured on a machine with an expired
-trial and no key set:
-
-```
-$ odin gesstabs P26107q.odin --json
-odin gesstabs: GESStabs Generator trial has expired. Set ODIN_LICENSE_KEY to a valid license key to continue.
-$ echo $?
-1
-```
-
-Here the correct report is *"Generator-vs-source verification skipped — the GESStabs
-license is unavailable (trial expired). Set `$ODIN_LICENSE_KEY` to run it,"* **not**
-silence and **not** a text-scan fallback. With a valid key (or active trial) the same
-command exits 0 and prints the diagnostics contract to act on.
-
 ## Contract reference
 
-All three JSON contracts — `odin review`, `odin check --symbols`, and the
-`odin gesstabs` report — are versioned independently (`schemaVersion`); check it
-before relying on a field.
+Both JSON contracts — `odin review` and `odin check --symbols` — are versioned
+independently (`schemaVersion`); check it before relying on a field.
 `review` and `--symbols` never exit 1 — their output is data feeding this skill's
 judgment, not a pass/fail verdict; a corpus with a bad file still exits 0 and records
-that file's error in its own row. `gesstabs` is the exception: it carries an exit-1
-**block** tier because it runs behind the license gate, so Capability 3 must branch on
-the exit code before trusting an empty diagnostics list.
+that file's error in its own row.

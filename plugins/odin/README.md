@@ -4,11 +4,10 @@ A one-install plugin that wires the **canonical NIPO ODIN engine** into Claude C
 and Codex. Installing it gives you, with no manual configuration:
 
 - **MCP tools** — `check` (ground-truth diagnostics), `symbols` (the structural map),
-  `review` (corpus audit), `explain` (command/function/operator reference), and the
-  license-gated `gesstabs` generator — plus the `odin://commands`, `odin://functions`
-  and `odin://operators` reference resources.
-- The **`odin-review` skill** — corpus audit, intent-vs-spec, and generator-vs-source
-  reconciliation, all reasoning over the engine's structural map (never raw text).
+  `review` (corpus audit), and `explain` (command/function/operator reference) — plus
+  the `odin://commands`, `odin://functions` and `odin://operators` reference resources.
+- The **`odin-review` skill** — corpus audit and intent-vs-spec reconciliation, both
+  reasoning over the engine's structural map (never raw text).
 - **`/odin:` slash commands** (Claude Code) — `/odin:audit`, `/odin:check`, `/odin:explain`.
 - A **PostToolUse hook** (Claude Code) — every `.odin` edit is auto-validated against
   the engine, and any Error/Warning is fed back into the conversation before the next turn.
@@ -50,7 +49,7 @@ slash commands and the auto-validate hook are Claude Code features.
 Confirm it loaded:
 
 - Ask *"List the odin MCP tools you have"* — you should get `check`, `symbols`,
-  `review`, `explain` and `gesstabs`. The first start can take a few seconds while
+  `review` and `explain`. The first start can take a few seconds while
   `npx` downloads the engine.
 - In Claude Code, `/help` lists `/odin:audit`, `/odin:check`, `/odin:explain`, and
   editing a `.odin` file with a defect (e.g. a dangling `*GOTO`) surfaces the engine's
@@ -91,20 +90,10 @@ Any MCP client can run the server directly. For Cursor, add this to
 }
 ```
 
-## GESStabs licensing
-
-The `gesstabs` tool runs behind the same license gate as the VS Code Pro extension. Its
-key is read **only** from the `$ODIN_LICENSE_KEY` environment variable of the process
-that launches the MCP server — never a tool argument — so it can't land in a transcript
-or argv. Within the trial window no key is needed; when the gate blocks, the tool
-degrades gracefully (`{available:false, reason, message}`) rather than returning a
-misleading empty result.
-
 ## Privacy
 
-The engine analyses your scripts locally and never uploads them. Its only network
-traffic is the GESStabs license check, which sends the license key and a machine
-instance name to the license provider.
+The engine analyses your scripts locally and never uploads them. It makes no network
+requests.
 
 ## License
 

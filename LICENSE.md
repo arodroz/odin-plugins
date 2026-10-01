@@ -23,31 +23,24 @@ You may not:
   applicable law expressly permits it despite this restriction;
 - remove or alter this notice or any copyright notice.
 
-## 3. Licensed features
-
-Some features, such as GESStabs generation, require a separate paid license
-key. This agreement does not grant that license.
-
-## 4. Your data
+## 3. Your data
 
 The Software analyses the files you give it on your own machine and never
-uploads your scripts or their content. Its only network traffic is the license
-check for licensed features, which sends your license key and a machine
-instance name to the license provider (Lemon Squeezy).
+uploads your scripts or their content. It makes no network requests.
 
-## 5. No warranty
+## 4. No warranty
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 NON-INFRINGEMENT. Diagnostics are an aid, not a guarantee that a questionnaire
 behaves correctly in production.
 
-## 6. Limitation of liability
+## 5. Limitation of liability
 
 TO THE EXTENT PERMITTED BY LAW, THE AUTHOR IS NOT LIABLE FOR ANY DAMAGES
 ARISING FROM THE USE OF, OR INABILITY TO USE, THE SOFTWARE.
 
-## 7. Termination
+## 6. Termination
 
 This license ends automatically if you breach it. On termination you must stop
 using and delete the Software.

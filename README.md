@@ -2,7 +2,7 @@
 
 The **odin** plugin for Claude Code and Codex: the canonical NIPO ODIN analysis
 engine as MCP tools (diagnostics, structural map, corpus audit, language
-reference, gated GESStabs), the odin-review skill, `/odin:` commands and
+reference), the odin-review skill, `/odin:` commands and
 auto-validation of every `.odin` edit.
 
 ```text
@@ -18,4 +18,4 @@ codex plugin add odin@anteras-odin
 Requires Node.js 18+. Details: [plugins/odin/README.md](plugins/odin/README.md).
 The engine alone is on npm as [`@arodroz/odin`](https://www.npmjs.com/package/@arodroz/odin).
 
-Current engine: **1.27.2**. Free to use; not open source — see [LICENSE.md](LICENSE.md).
+Current engine: **1.28.0**. Free to use; not open source — see [LICENSE.md](LICENSE.md).

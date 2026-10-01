@@ -9,17 +9,16 @@
     {
       "name": "odin",
       "source": "./plugins/odin",
-      "description": "MCP tools (check, symbols, review, explain, gated gesstabs) + odin:// reference resources, the odin-review skill, /odin: commands, and PostToolUse auto-validation of every .odin edit.",
+      "description": "MCP tools (check, symbols, review, explain) + odin:// reference resources, the odin-review skill, /odin: commands, and PostToolUse auto-validation of every .odin edit.",
       "category": "productivity",
       "keywords": [
         "odin",
         "nipo",
         "survey",
         "questionnaire",
-        "gesstabs",
         "mcp"
       ],
-      "version": "1.27.2"
+      "version": "1.28.0"
     }
   ]
 }
