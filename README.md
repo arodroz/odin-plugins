@@ -18,4 +18,4 @@ codex plugin add odin@anteras-odin
 Requires Node.js 18+. Details: [plugins/odin/README.md](plugins/odin/README.md).
 The engine alone is on npm as [`@arodroz/odin`](https://www.npmjs.com/package/@arodroz/odin).
 
-Current engine: **1.27.1**. Free to use; not open source — see [LICENSE.md](LICENSE.md).
+Current engine: **1.27.2**. Free to use; not open source — see [LICENSE.md](LICENSE.md).
