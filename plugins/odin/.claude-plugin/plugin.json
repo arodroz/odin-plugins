@@ -1,6 +1,6 @@
 {
   "name": "odin",
-  "version": "1.35.1",
+  "version": "1.35.2",
   "description": "NIPO ODIN questionnaire tooling for Claude Code and Codex: ground-truth diagnostics, the structural map, corpus audit, and language reference over MCP, plus /odin: commands and auto-validation of every .odin edit. Backed by the canonical Go engine via `odin mcp`.",
   "author": {
     "name": "Antonio Rodriguez",
