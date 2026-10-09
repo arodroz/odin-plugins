@@ -1,0 +1,45 @@
+name: Bug report
+description: Something crashes, hangs, or doesn't work — the debugger, Word export, panels, the CLI or the plugin.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This tracker is public.** Don't paste client questionnaires, brand names or respondent data. If you can't describe the problem without them, use the email link on the previous page instead.
+
+        For a diagnostic that looks wrong, the "A diagnostic looks wrong" form gets it fixed faster.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what you got instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open a script with …
+        2. Press F5
+        3. …
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error output
+      description: For VS Code, copy from View → Output → "ODIN Language Server". Check it for client data first.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Extension or `@arodroz/odin` version.
+      placeholder: "1.31.0"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Where you saw it
+      placeholder: "VS Code 1.105 on Windows / odin CLI / Claude Code plugin"

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or discussion
+    url: https://github.com/arodroz/odin-plugins/discussions
+    about: How do I…? Is this ODIN construct supported? Ask here.
+  - name: Report privately by email
+    url: https://github.com/arodroz/odin-plugins#feedback
+    about: For anything you can't share publicly, such as a client script that triggers the problem.

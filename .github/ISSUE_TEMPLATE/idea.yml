@@ -1,0 +1,27 @@
+name: Idea or feature request
+description: Something that would make writing, checking or handing off ODIN scripts easier.
+title: "[idea] "
+labels: ["idea"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What would help
+      description: Describe the problem you run into, not only the solution — there may be a better one.
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example
+      description: A situation where you'd have used it. Anonymise any script text.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: "1.31.0"
+  - type: input
+    id: environment
+    attributes:
+      label: Where you'd use it
+      placeholder: "VS Code / odin CLI / Claude Code plugin"

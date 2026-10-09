@@ -1,0 +1,45 @@
+name: A diagnostic looks wrong
+description: The engine flags valid ODIN, misses a real error, or the message is misleading.
+title: "[diagnostic] "
+labels: ["diagnostic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks — wrong diagnostics are the most useful reports there are; each one becomes a regression test.
+
+        **This tracker is public.** Don't paste client questionnaires, brand names or respondent data. A few lines with the names changed are enough. If you can't share any of it, use the email link on the previous page instead.
+  - type: textarea
+    id: diagnostic
+    attributes:
+      label: Diagnostic
+      description: The message as shown in the Problems panel or by `odin check`, with its code if it has one.
+      placeholder: "error [undefined-question]: Question Q12 is not defined"
+    validations:
+      required: true
+  - type: textarea
+    id: snippet
+    attributes:
+      label: Smallest snippet that reproduces it
+      description: Anonymise names and texts. The flagged line plus the declarations it refers to is usually enough.
+      render: text
+  - type: textarea
+    id: expected
+    attributes:
+      label: Why it's wrong
+      description: What should happen instead? If Nfield accepts or rejects the script, say so — that settles it.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Extension or `@arodroz/odin` version.
+      placeholder: "1.31.0"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Where you saw it
+      placeholder: "VS Code 1.105 on Windows / odin CLI / Claude Code plugin"
