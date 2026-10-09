@@ -4,7 +4,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "@arodroz/odin@1.35.0",
+        "@arodroz/odin@1.35.1",
         "mcp"
       ]
     }
