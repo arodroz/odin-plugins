@@ -4,11 +4,17 @@ A one-install plugin that wires the **canonical NIPO ODIN engine** into Claude C
 and Codex. Installing it gives you, with no manual configuration:
 
 - **MCP tools** — `check` (ground-truth diagnostics), `symbols` (the structural map),
-  `review` (corpus audit), and `explain` (command/function/operator reference) — plus
+  `review` (corpus audit), `explain` (command/function/operator reference), and
+  `explore` (synthetic respondents: unreached routing, endless loops), and `diff`
+  (structural change log between two versions) — plus
   the `odin://commands`, `odin://functions` and `odin://operators` reference resources.
 - The **`odin-review` skill** — corpus audit and intent-vs-spec reconciliation, both
   reasoning over the engine's structural map (never raw text).
-- **`/odin:` slash commands** (Claude Code) — `/odin:audit`, `/odin:check`, `/odin:explain`.
+- The **`odin-draft` skill** — drafts a script from a questionnaire spec (Word, PDF or
+  text), then verifies it with `check`, `symbols` and `explore` until it checks clean
+  and matches the spec, leaving `** TODO:` lines for what the spec leaves open.
+- **`/odin:` slash commands** (Claude Code) — `/odin:audit`, `/odin:check`, `/odin:explain`,
+  `/odin:explore`, `/odin:draft`.
 - A **PostToolUse hook** (Claude Code) — every `.odin` edit is auto-validated against
   the engine, and any Error/Warning is fed back into the conversation before the next turn.
 
@@ -49,9 +55,10 @@ slash commands and the auto-validate hook are Claude Code features.
 Confirm it loaded:
 
 - Ask *"List the odin MCP tools you have"* — you should get `check`, `symbols`,
-  `review` and `explain`. The first start can take a few seconds while
+  `review`, `explain` and `explore`. The first start can take a few seconds while
   `npx` downloads the engine.
-- In Claude Code, `/help` lists `/odin:audit`, `/odin:check`, `/odin:explain`, and
+- In Claude Code, `/help` lists `/odin:audit`, `/odin:check`, `/odin:explain`,
+  `/odin:explore`, and
   editing a `.odin` file with a defect (e.g. a dangling `*GOTO`) surfaces the engine's
   diagnostics on the next turn.
 

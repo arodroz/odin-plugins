@@ -35,9 +35,9 @@ want, or just describe the goal and let Claude reach for the tools.
 
 After installing (README) and starting a fresh session:
 
-1. Type `/odin:` — you should see `audit`, `check`, and `explain` in the completion list.
+1. Type `/odin:` — you should see `audit`, `check`, `explain` and `explore` in the completion list.
 2. Ask: *"List the odin MCP tools you have."* — Claude should name `check`, `symbols`,
-   `review`, and `explain`.
+   `review`, `explain` and `explore`.
 3. Run `/odin:check` on any `.odin` file — you should get either `clean` or a list of
    `file:line:col` diagnostics.
 
