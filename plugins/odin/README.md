@@ -105,7 +105,8 @@ requests.
 ## License
 
 Free to use, including commercially; not open source. See [LICENSE.md](LICENSE.md).
-Report problems at [github.com/arodroz/odin-plugins/issues](https://github.com/arodroz/odin-plugins/issues).
+Report problems at [odin.anteras.org/feedback](https://odin.anteras.org/feedback): a short form,
+no account needed, sent privately to the developer.
 
 The engine is maintained by one person. If it saves you or your team time,
 [buy me a coffee](https://buymeacoffee.com/arodroz).

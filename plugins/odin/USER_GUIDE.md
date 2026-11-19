@@ -208,9 +208,10 @@ Yes. Every surface (`check`, `audit`, the hook, the tools) decodes UTF-8 and UTF
 transparently. You don't need to convert anything.
 
 **A diagnostic looks wrong / the engine rejects valid syntax.**
-The engine is the canonical source of truth, but it can have grammar gaps. File it at
-the [issue tracker](https://github.com/arodroz/odin-plugins/issues) with the smallest
-snippet that reproduces — that's how grammar coverage improves.
+The engine is the canonical source of truth, but it can have grammar gaps. Report it at
+[odin.anteras.org/feedback](https://odin.anteras.org/feedback) with the smallest snippet
+that reproduces — that's how grammar coverage improves. The form needs no account and the
+report goes privately to the developer.
 
 ---
 

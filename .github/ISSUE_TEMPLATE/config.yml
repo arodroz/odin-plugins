@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Question or discussion
-    url: https://github.com/arodroz/odin-plugins/discussions
-    about: How do I…? Is this ODIN construct supported? Ask here.
-  - name: Report privately by email
-    url: https://github.com/arodroz/odin-plugins#feedback
-    about: For anything you can't share publicly, such as a client script that triggers the problem.
+  - name: Report a bug, a wrong diagnostic, an idea or a question
+    url: https://odin.anteras.org/feedback
+    about: A short form. No account needed, and your report goes privately to the developer.
